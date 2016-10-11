@@ -25,7 +25,7 @@ public class VehicleServer extends AbstractHandler
         if (query != null) {
             if (query.toLowerCase().contains("forwards")) {
                 Runtime.getRuntime().exec("/usr/bin/perl /home/pi/bin/drive.pl f");
-                result = "<h1>Forwards</h1>";
+                result = "<h1>Fo8080rwards</h1>";
             } else if (query.toLowerCase().contains("backwards")) {
                 Runtime.getRuntime().exec("/usr/bin/perl /home/pi/bin/drive.pl b");
                 result = "<h1>Backwards</h1>";
