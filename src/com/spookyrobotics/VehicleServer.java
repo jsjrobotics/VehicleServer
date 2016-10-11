@@ -22,15 +22,17 @@ public class VehicleServer extends AbstractHandler
 
         String query = request.getQueryString();
         String result = "<h1>Unrecognized</h1>";
-        if (query.toLowerCase().contains("forwards")){
-            Runtime.getRuntime().exec("/usr/bin/perl /home/pi/bin/drive.pl f");
-            result = "<h1>Forwards</h1>";
-        } else if (query.toLowerCase().contains("backwards")){
-            Runtime.getRuntime().exec("/usr/bin/perl /home/pi/bin/drive.pl b");
-            result = "<h1>Backwards</h1>";
-        } else if (query.toLowerCase().contains("stop")){
-            Runtime.getRuntime().exec("/usr/bin/perl /home/pi/bin/drive.pl s");
-            result = "<h1>Stop</h1>";
+        if (query != null) {
+            if (query.toLowerCase().contains("forwards")) {
+                Runtime.getRuntime().exec("/usr/bin/perl /home/pi/bin/drive.pl f");
+                result = "<h1>Forwards</h1>";
+            } else if (query.toLowerCase().contains("backwards")) {
+                Runtime.getRuntime().exec("/usr/bin/perl /home/pi/bin/drive.pl b");
+                result = "<h1>Backwards</h1>";
+            } else if (query.toLowerCase().contains("stop")) {
+                Runtime.getRuntime().exec("/usr/bin/perl /home/pi/bin/drive.pl s");
+                result = "<h1>Stop</h1>";
+            }
         }
         // Declare response encoding and types
         response.setContentType("text/html; charset=utf-8");
