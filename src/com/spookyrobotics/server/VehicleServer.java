@@ -1,4 +1,4 @@
-package com.spookyrobotics;
+package com.spookyrobotics.server;
 
 import java.io.IOException;
 
@@ -6,12 +6,18 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.spookyrobotics.Context;
 import org.eclipse.jetty.server.Request;
-import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.handler.AbstractHandler;
 
 public class VehicleServer extends AbstractHandler
 {
+    private final Context mContext;
+
+    public VehicleServer(Context context) {
+        mContext = context;
+    }
+
     @Override
     public void handle( String target,
                         Request baseRequest,
@@ -25,7 +31,7 @@ public class VehicleServer extends AbstractHandler
         if (query != null) {
             if (query.toLowerCase().contains("forwards")) {
                 Runtime.getRuntime().exec("/usr/bin/perl /home/pi/bin/drive.pl f");
-                result = "<h1>Fo8080rwards</h1>";
+                result = "<h1>Forwards</h1>";
             } else if (query.toLowerCase().contains("backwards")) {
                 Runtime.getRuntime().exec("/usr/bin/perl /home/pi/bin/drive.pl b");
                 result = "<h1>Backwards</h1>";
